@@ -1,0 +1,28 @@
+.input-row {
+    display:flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    padding: 5px;
+}
+
+.blue {
+    background-color: lightblue;
+}
+
+.grey {
+    background-color: lightgrey;
+}
+
+.input-cell {
+    display:flex;
+    flex-direction:column;
+}
+
+body, form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    
+}
