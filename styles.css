@@ -26,3 +26,21 @@ body, form {
     flex-direction: column;
     
 }
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+#orange {
+    color: orange
+}
+#green {
+    color: green
+}
+#gold {
+    color: gold
+}
+#blue {
+    color: blue
+}

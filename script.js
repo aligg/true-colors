@@ -24,10 +24,29 @@ const onSubmit = () => {
     sessionStorage.setItem("greenTotal", greenTotal)
 }
 
-const accessResult = () => {
-    document.getElementById('orange-total').innerHTML = sessionStorage.getItem("orangeTotal")
-    document.getElementById('blue-total').innerHTML = sessionStorage.getItem("blueTotal")
-    document.getElementById('gold-total').innerHTML = sessionStorage.getItem("goldTotal")
-    document.getElementById('green-total').innerHTML = sessionStorage.getItem("greenTotal")
+const setResults = () => {
+    const results = []
+    results.push(["orange", sessionStorage.getItem("orangeTotal")])
+    results.push(["blue", sessionStorage.getItem("blueTotal")])
+    results.push(["gold", sessionStorage.getItem("goldTotal")])
+    results.push(["green", sessionStorage.getItem("greenTotal")])
 
+    results.sort((a, b) => {
+        return Number(b[1]) - Number(a[1])
+    })
+
+    const heading = document.getElementById('results-heading')
+    const topColor = results[0][0]
+    const secondColor = results[1][0]
+    heading.innerHTML = `You are a <span id=${topColor}>${topColor}</span> primary with a <span id=${secondColor}>${secondColor}</span> secondary &#129412;`
+
+    const listContainer = document.getElementById('results-list')
+    results.forEach((item) => {
+        const [color, score] = item
+        const listItem = document.createElement("li")
+        listItem.innerHTML = `Your total ${color} score is: ${score}`
+        listItem.id = `${color}-total`
+        listContainer.appendChild(listItem)
+    })
 }
+
