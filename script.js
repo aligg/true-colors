@@ -1,4 +1,6 @@
-
+/**
+ * Helper method to sum total for each color
+ */
 const sumTotal = (arr) => {
     let total = 0;
     Array.from(arr).forEach((input) => {
@@ -7,7 +9,10 @@ const sumTotal = (arr) => {
     return total
 }
 
-const onSubmit = () => {
+/**
+ * Store array of ranking choices so that we can persist user input across page reloads on the index page
+ */
+const storeRawResults = () => {
     const valuesCollection = document.getElementById("true-colors").getElementsByTagName("input")
     const resultsToStore = []
     Array.from(valuesCollection).forEach((input) => {
@@ -16,7 +21,12 @@ const onSubmit = () => {
         }
       });
     sessionStorage.setItem("results", JSON.stringify({"arr": resultsToStore}))
-    
+}
+
+/**
+ * Store total for each color for access on success page
+ */
+const storeTotal = () => {
     const oranges = document.getElementsByClassName("orange")
     const blues = document.getElementsByClassName("blue")
     const golds = document.getElementsByClassName("gold")
@@ -33,22 +43,36 @@ const onSubmit = () => {
     sessionStorage.setItem("greenTotal", greenTotal)
 }
 
+/**
+ * On submit from index page do the following:
+ */
+const onSubmit = () => {
+    // TODO: Could clean up data structures and only store once
+    storeRawResults()
+    storeTotal()
+}
+
+/**
+ * On page load of index page, try and access values from session if any
+ */
 const accessSessionValues = () => {
     const valuesObj = sessionStorage.getItem("results")
-    console.log(valuesObj)
-    const valuesArr = JSON.parse(valuesObj)["arr"]
 
-    if (valuesArr != undefined) {
+    if (valuesObj != undefined) {
+        const valuesArr = JSON.parse(valuesObj)["arr"]
         const inputs = document.getElementById("true-colors").getElementsByTagName("input")
+        
         Array.from(inputs).forEach((input, i) => {
             if(input.type === "text") {
                 input.value = valuesArr[i]
             }
         });
     }
-
 }
 
+/**
+ * On success page load, access totals and inject into page to display
+ */
 const setResults = () => {
     const results = []
     results.push(["orange", sessionStorage.getItem("orangeTotal")])
