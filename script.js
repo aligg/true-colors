@@ -74,7 +74,6 @@ const accessSessionValues = () => {
  * Helper to display an for orange (only vowel possibility)
  */
 const aOrAn = (colorStr) => {
-    console.log(colorStr)
  if (colorStr[0] === 'o') {
      return "an"
  }
