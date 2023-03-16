@@ -71,6 +71,17 @@ const accessSessionValues = () => {
 }
 
 /**
+ * Helper to display an for orange (only vowel possibility)
+ */
+const aOrAn = (colorStr) => {
+    console.log(colorStr)
+ if (colorStr[0] === 'o') {
+     return "an"
+ }
+ return "a"
+}
+
+/**
  * On success page load, access totals and inject into page to display
  */
 const setResults = () => {
@@ -87,7 +98,7 @@ const setResults = () => {
     const heading = document.getElementById('results-heading')
     const topColor = results[0][0]
     const secondColor = results[1][0]
-    heading.innerHTML = `You are a <span id=${topColor}>${topColor}</span> primary with a <span id=${secondColor}>${secondColor}</span> secondary &#129412;`
+    heading.innerHTML = `You are ${aOrAn(topColor)} <span id=${topColor}>${topColor}</span> primary with ${aOrAn(secondColor)} <span id=${secondColor}>${secondColor}</span> secondary &#129412;`
 
     const listContainer = document.getElementById('results-list')
     results.forEach((item) => {
