@@ -1,17 +1,26 @@
 
 const sumTotal = (arr) => {
     let total = 0;
-    arr.forEach((input) => {
+    Array.from(arr).forEach((input) => {
         total += Number(input.value)
     })
     return total
 }
 
 const onSubmit = () => {
-    const oranges = document.getElementsByName("orange")
-    const blues = document.getElementsByName("blue")
-    const golds = document.getElementsByName("gold")
-    const greens = document.getElementsByName("green")
+    const valuesCollection = document.getElementById("true-colors").getElementsByTagName("input")
+    const resultsToStore = []
+    Array.from(valuesCollection).forEach((input) => {
+        if(input.type === "text") {
+            resultsToStore.push(input.value)
+        }
+      });
+    sessionStorage.setItem("results", JSON.stringify({"arr": resultsToStore}))
+    
+    const oranges = document.getElementsByClassName("orange")
+    const blues = document.getElementsByClassName("blue")
+    const golds = document.getElementsByClassName("gold")
+    const greens = document.getElementsByClassName("green")
 
     const orangeTotal = sumTotal(oranges)
     const blueTotal = sumTotal(blues)
@@ -22,6 +31,22 @@ const onSubmit = () => {
     sessionStorage.setItem("blueTotal", blueTotal)
     sessionStorage.setItem("goldTotal", goldTotal)
     sessionStorage.setItem("greenTotal", greenTotal)
+}
+
+const accessSessionValues = () => {
+    const valuesObj = sessionStorage.getItem("results")
+    console.log(valuesObj)
+    const valuesArr = JSON.parse(valuesObj)["arr"]
+
+    if (valuesArr != undefined) {
+        const inputs = document.getElementById("true-colors").getElementsByTagName("input")
+        Array.from(inputs).forEach((input, i) => {
+            if(input.type === "text") {
+                input.value = valuesArr[i]
+            }
+        });
+    }
+
 }
 
 const setResults = () => {

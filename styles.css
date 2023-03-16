@@ -11,11 +11,11 @@ fieldset {
     border: 0;
 }
 
-.blue {
+.blue-background {
     background-color: lightblue;
 }
 
-.grey {
+.grey-background {
     background-color: lightgrey;
 }
 
