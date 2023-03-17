@@ -8,6 +8,28 @@ const sumTotal = (arr) => {
     })
     return total
 }
+const validateRow = (inputs) => {
+    const values = []
+    Array.from(inputs).forEach((input) => {
+        values.push(input.value)
+    })
+
+    if (values.sort() != ['1', '2', '3', '4']) {
+        console.log('got in false condition')
+        return false
+    }
+    return true
+} 
+
+/**
+ * Helper method to validate each number only once per row
+*/
+const validateRows = () => {
+    const rows = document.getElementsByTagName("fieldset")
+    return Array.from(rows).forEach((row) => {
+        return validateRow(row.elements)
+    })
+}
 
 /**
  * Store array of ranking choices so that we can persist user input across page reloads on the index page
@@ -47,6 +69,7 @@ const storeTotal = () => {
  * On submit from index page do the following:
  */
 const onSubmit = () => {
+    validateRows()
     // TODO: Could clean up data structures and only store once
     storeRawResults()
     storeTotal()
