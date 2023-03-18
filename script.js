@@ -14,6 +14,7 @@ const rowIsValid = (inputs) => {
         values.push(input.value)
     })
     if (JSON.stringify(values.sort()) != JSON.stringify(["1", "2", "3", "4"])) {
+        alert("Make sure each value (1,2,3,4) only occurs once per row")
         return false
     }
     return true
@@ -94,7 +95,9 @@ const accessSessionValues = () => {
         
         Array.from(inputs).forEach((input, i) => {
             if(input.type === "text") {
-                input.value = valuesArr[i]
+                if (valuesArr[i] != undefined) {
+                    input.value = valuesArr[i]
+                }
             }
         });
     }

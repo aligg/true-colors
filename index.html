@@ -11,7 +11,7 @@
     <body onload="accessSessionValues()">
         <form onsubmit="return onSubmit();" action="success.html" id="true-colors">
             <p>True Colors Assessment: Compare all 4 boxes in each row. Do not analyze each word; just get a sense of each box. Score each of the four boxes in each row, from most like you to least like you: 4 = most, 3 = a lot, 2 = somewhat, 1 = least.</p>
-            <fieldset class="input-row blue-background">
+            <fieldset class="input-row blue-background" id="row-1">
                 <div class="input-cell">
                     <label for="orange">active <br> opportunistic <br> spontaneous<br> </label>
                     <input type="text" pattern="[1-4]{1}" required  class="orange" />
@@ -47,7 +47,7 @@
                     <input type="text" pattern="[1-4]{1}" required  class="orange" />
                 </div>
             </fieldset>
-            <!-- <fieldset class="input-row blue-background">
+            <fieldset class="input-row blue-background">
                 <div class="input-cell">
                     <label>loyal <br> conservative <br> organized<br> </label>
                     <input type="text" pattern="[1-4]{1}" required  class="gold" />
@@ -100,7 +100,7 @@
                     <label>orderly <br> conventional <br> caring<br> </label>
                     <input type="text" pattern="[1-4]{1}" required  class="gold" />
                 </div>
-            </fieldset> -->
+            </fieldset>
             <br/>
             <input type="submit" value="Submit">
         </form>
