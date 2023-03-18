@@ -8,14 +8,12 @@ const sumTotal = (arr) => {
     })
     return total
 }
-const validateRow = (inputs) => {
+const rowIsValid = (inputs) => {
     const values = []
     Array.from(inputs).forEach((input) => {
         values.push(input.value)
     })
-
-    if (values.sort() != ['1', '2', '3', '4']) {
-        console.log('got in false condition')
+    if (JSON.stringify(values.sort()) != JSON.stringify(["1", "2", "3", "4"])) {
         return false
     }
     return true
@@ -24,11 +22,18 @@ const validateRow = (inputs) => {
 /**
  * Helper method to validate each number only once per row
 */
-const validateRows = () => {
+const rowsAreValid = () => {
     const rows = document.getElementsByTagName("fieldset")
-    return Array.from(rows).forEach((row) => {
-        return validateRow(row.elements)
+    let invalidRowsFound = 0
+    Array.from(rows).forEach((row) => {        
+        if (!rowIsValid(row.elements)) {
+            invalidRowsFound += 1
+        }
     })
+    if (invalidRowsFound > 0) {
+        return false
+    }
+    return true
 }
 
 /**
@@ -69,7 +74,9 @@ const storeTotal = () => {
  * On submit from index page do the following:
  */
 const onSubmit = () => {
-    validateRows()
+    if (!rowsAreValid()) {
+        return false
+    }
     // TODO: Could clean up data structures and only store once
     storeRawResults()
     storeTotal()
