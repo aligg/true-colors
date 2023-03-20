@@ -5,6 +5,7 @@
     justify-content: space-between;
     flex-flow: row wrap;
     padding: 5px;
+    max-height: 110px;
 }
 
 fieldset {
@@ -22,18 +23,23 @@ fieldset {
 .input-cell {
     display:flex;
     flex-direction:column;
+    align-self: center;
 }
 
-body, form {
+form {
     display: flex;
     flex: 1;
     flex-direction: column;
-    
+    max-width: 900px
 }
 
 ul {
     list-style: none;
     padding: 0;
+}
+
+h1 {
+    margin-block-end: 0;
 }
 
 #orange {
@@ -47,4 +53,11 @@ ul {
 }
 #blue {
     color: blue
+}
+
+body {
+    min-height: 100vh;
+    margin: 0px 20px 0px 20px;
+    display:flex;
+    flex-direction:column;
 }
