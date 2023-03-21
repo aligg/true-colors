@@ -35,7 +35,7 @@ ul {
     padding: 0;
 }
 
-h1 {
+h1, h2 {
     margin-block-end: 0;
 }
 
@@ -53,16 +53,16 @@ h1 {
 }
 
 #orange-section {
-    background-color: lightsalmon
+    background-color: #ffa07a99
 }
 #green-section {
-    background-color: lightgreen
+    background-color: #90ee909c
 }
 #gold-section {
     background-color: lightgoldenrodyellow
 }
 #blue-section {
-    background-color: lightsteelblue
+    background-color: #b0c4deb8
 }
 
 body {
