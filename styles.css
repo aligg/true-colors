@@ -77,3 +77,8 @@ body {
 #home {
     justify-content:space-between;
 }
+
+footer {
+    justify-content: space-between;
+    display: flex;
+}
