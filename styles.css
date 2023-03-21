@@ -52,6 +52,19 @@ h1 {
     color: blue
 }
 
+#orange-section {
+    background-color: lightsalmon
+}
+#green-section {
+    background-color: lightgreen
+}
+#gold-section {
+    background-color: lightgoldenrodyellow
+}
+#blue-section {
+    background-color: lightsteelblue
+}
+
 body {
     margin: 0px 20px 0px 20px;
     display:flex;
