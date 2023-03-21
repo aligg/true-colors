@@ -117,6 +117,12 @@ const aOrAn = (colorStr) => {
  * On success page load, access totals and inject into page to display
  */
 const setResults = () => {
+    const heading = document.getElementById('results-heading')
+    if (sessionStorage.length === 0) {
+        heading.innerHTML = "Take the <a href='index.html'>true colors quiz<a> to find out your results"
+        return
+    }
+    
     const results = []
     results.push(["orange", sessionStorage.getItem("orangeTotal")])
     results.push(["blue", sessionStorage.getItem("blueTotal")])
@@ -127,7 +133,6 @@ const setResults = () => {
         return Number(b[1]) - Number(a[1])
     })
 
-    const heading = document.getElementById('results-heading')
     const topColor = results[0][0]
     const secondColor = results[1][0]
     heading.innerHTML = `You are ${aOrAn(topColor)} <span id=${topColor}>${topColor}</span> primary with ${aOrAn(secondColor)} <span id=${secondColor}>${secondColor}</span> secondary &#129412;`
