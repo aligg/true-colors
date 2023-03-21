@@ -30,9 +30,11 @@ form {
     flex-direction: column;
 }
 
-ul {
+
+#results-list {
     list-style: none;
     padding: 0;
+
 }
 
 h1, h2 {
