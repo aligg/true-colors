@@ -133,9 +133,13 @@ const setResults = () => {
         return Number(b[1]) - Number(a[1])
     })
 
-    const topColor = results[0][0]
-    const secondColor = results[1][0]
-    heading.innerHTML = `You are ${aOrAn(topColor)} <span id=${topColor}>${topColor}</span> primary with ${aOrAn(secondColor)} <span id=${secondColor}>${secondColor}</span> secondary &#129412;`
+    const [topColor, topScore] = results[0]
+    const [secondColor, secondScore] = results[1]
+    if (topScore === secondScore) {
+        heading.innerHTML = `You are ${aOrAn(topColor)} <span id=${topColor}>${topColor}</span> and ${aOrAn(secondColor)} <span id=${secondColor}>${secondColor}</span> primary. A tie! &#129412;`
+    } else {
+        heading.innerHTML = `You are ${aOrAn(topColor)} <span id=${topColor}>${topColor}</span> primary with ${aOrAn(secondColor)} <span id=${secondColor}>${secondColor}</span> secondary &#129412;`
+    }
 
     const listContainer = document.getElementById('results-list')
     results.forEach((item) => {
